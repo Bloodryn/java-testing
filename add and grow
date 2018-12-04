@@ -1,0 +1,15 @@
+	void add(String s)						// Add entry in the correct sorted location. Increases capacity if needed.
+	{
+		for (int i = 0; i <stringArray.length; i++) {
+			if (stringArray[i] ==  null) {
+				stringArray[i] = s;
+				return;
+			}
+		}
+	
+		String[] tempStringArray = new String[currentSize]; //making a temp array for moving data
+		tempStringArray = (String[])stringArray.clone();	// cloning old array into temp array
+		stringArray = new String[++currentSize];	//rebuilding original array with 1 more capacity
+		System.arraycopy(tempStringArray, 0, stringArray, 0, currentSize-1);
+		add(s);
+	}	
